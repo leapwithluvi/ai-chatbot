@@ -13,4 +13,4 @@ export const generateReply = async (message: string) => {
     console.error("Error generating reply:", error);
     return "Sorry, AI failed to respone.";
   }
-};
+}
