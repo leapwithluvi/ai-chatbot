@@ -1,16 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import Chat from "./pages/Chat.tsx";
-import Home from "./pages/Home.tsx";
+import Overview from "./pages/Overview.tsx";
 
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/home" replace />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/chat" element={<Chat />} />
+      <Route path="/" element={<Chat />} />
+      <Route path="/overview" element={<Overview />} />
     </Routes>
   );
 };

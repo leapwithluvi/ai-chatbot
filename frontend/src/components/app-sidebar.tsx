@@ -1,17 +1,10 @@
 "use client";
 
 import * as React from "react";
-import {
-  // BookOpen,
-  Bot,
-  LifeBuoy,
-  Send,
-  SquareTerminal,
-} from "lucide-react";
+import { BookOpen, Bot, SquarePen } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavProjects } from "@/components/nav-projects";
-import { NavSecondary } from "@/components/nav-secondary";
 import { NavUser } from "@/components/nav-user";
 import {
   Sidebar,
@@ -33,8 +26,13 @@ const data = {
     {
       title: "New Chat",
       url: "#",
-      icon: SquareTerminal,
+      icon: SquarePen,
       isActive: true,
+    },
+    {
+      title: "Overview",
+      url: "/overview",
+      icon: BookOpen,
     },
     {
       title: "Models",
@@ -51,58 +49,23 @@ const data = {
         },
       ],
     },
-    // {
-    //   title: "Documentation",
-    //   url: "#",
-    //   icon: BookOpen,
-    //   items: [
-    //     {
-    //       title: "Introduction",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Get Started",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Tutorials",
-    //       url: "#",
-    //     },
-    //     {
-    //       title: "Changelog",
-    //       url: "#",
-    //     },
-    //   ],
-    // },
-  ],
-  navSecondary: [
-    {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
-    },
-    {
-      title: "Feedback",
-      url: "#",
-      icon: Send,
-    },
   ],
   chats: [
-    // {
-    //   name: "Design Engineering",
-    //   url: "#",
-    //   icon: Frame,
-    // },
-    // {
-    //   name: "Sales & Marketing",
-    //   url: "#",
-    //   icon: PieChart,
-    // },
-    // {
-    //   name: "Travel",
-    //   url: "#",
-    //   icon: Map,
-    // },
+    {
+      name: "Design Engineering",
+      url: "#",
+      // icon: Frame,
+    },
+    {
+      name: "Sales & Marketing",
+      url: "#",
+      // icon: PieChart,
+    },
+    {
+      name: "Travel",
+      url: "#",
+      // icon: Map,
+    },
   ],
 };
 
@@ -129,7 +92,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavProjects chats={data.chats} />
-        <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />
