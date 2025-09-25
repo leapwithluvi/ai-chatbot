@@ -9,7 +9,8 @@ const Hero = () => {
       </h4>
 
       <h1 className="font-extrabold text-balance mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-        Welcome to my AI chatbot project, powered by Ollama Gemma 2B
+        Welcome to my AI chatbot project, powered by a lightweight and powerful
+        AI model.
       </h1>
 
       <p className="leading-7 max-w-xl sm:max-w-2xl mb-8">
