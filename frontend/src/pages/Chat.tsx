@@ -31,7 +31,7 @@ export default function App() {
           </div>
           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
         </div> */}
-        <h1>Nihao ini chat page</h1>
+        <h1 className="text-white">Nihao ini chat page</h1>
       </SidebarInset>
     </SidebarProvider>
   );
