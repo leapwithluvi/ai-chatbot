@@ -13,7 +13,6 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import Home from "./pages/Home";
 
 export default function App() {
   return (
@@ -51,7 +50,7 @@ export default function App() {
           </div>
           <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
         </div> */}
-        <Home />
+        <h1>Nihao ini chat page</h1>
       </SidebarInset>
     </SidebarProvider>
   );
