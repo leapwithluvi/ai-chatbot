@@ -31,7 +31,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button className="bg-white text-black hover:bg-gray-200 transition">
-            Try LeapAI
+            <a href="/">Try LeapAI</a>
           </Button>
         </div>
 
@@ -80,7 +80,6 @@ const Navbar = () => {
 
           {/* CTA Button */}
           <Button
-            asChild
             className="bg-white text-black text-lg hover:bg-gray-200 mt-10 px-10 py-3 rounded-lg transition"
             onClick={() => setIsOpen(false)}
           >
