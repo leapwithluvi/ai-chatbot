@@ -1,18 +1,22 @@
-import React from "react";
-// components/overview/...
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/overview/Hero";
-import About from "@/components/overview/About";
+import Features from "@/components/overview/Features";
+import HowItWorks from "@/components/overview/HowItWorks";
 import Contact from "@/components/overview/Contact";
 
-// Start
 const Overview = () => {
   return (
-    <div className="bg-gray-950 text-white">
+    <div className="bg-background text-foreground selection:bg-blue-500/30">
       <Navbar />
-      <Hero />
-      <About />
-      <Contact />
+      <main>
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <Contact />
+      </main>
+      <footer className="py-10 text-center border-t border-border text-muted-foreground text-sm">
+        <p>© {new Date().getFullYear()} Nexus AI. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

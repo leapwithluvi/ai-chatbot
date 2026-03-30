@@ -21,19 +21,21 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-export function NavProjects({
+export function NavChats({
   chats,
+  title = "Chats",
 }: {
   chats: {
     name: string;
     url: string;
   }[];
+  title?: string;
 }) {
   const { isMobile } = useSidebar();
 
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <SidebarGroupLabel>Chats</SidebarGroupLabel>
+      <SidebarGroupLabel>{title}</SidebarGroupLabel>
       <SidebarMenu>
         {chats.map((item) => (
           <SidebarMenuItem key={item.name}>

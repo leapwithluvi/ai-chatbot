@@ -1,90 +1,96 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { X, Menu } from "lucide-react";
+import { ModeToggle } from "./mode-toggle";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const menuItems = [
     { name: "Overview", href: "/overview" },
-    { name: "About", href: "#about" },
+    { name: "Features", href: "#features" },
+    { name: "How it works", href: "#how-it-works" },
     { name: "Contact", href: "#contact" },
   ];
 
   return (
     <>
-      {/* Navbar Utama */}
-      <nav className="fixed w-full top-0 z-40 bg-gray-950 bg-opacity-80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <div className="text-2xl font-bold text-white">LeapAI</div>
+      <nav 
+        className={`fixed w-full top-0 z-50 transition-all duration-300 px-6 py-4 flex items-center justify-between ${
+          scrolled ? "bg-background/80 backdrop-blur-xl border-b border-border py-3" : "bg-transparent"
+        }`}
+      >
+        <div className="text-xl font-bold text-foreground tracking-tight flex items-center gap-2">
+            Nexus AI
+        </div>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-10">
           {menuItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-white hover:text-gray-300 transition font-medium"
+              className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium lowercase tracking-wide"
             >
               {item.name}
             </a>
           ))}
-          <Button className="bg-white text-black hover:bg-gray-200 transition">
-            <a href="/">Try LeapAI</a>
-          </Button>
+          <div className="flex items-center gap-4">
+            <ModeToggle />
+            <Button size="sm" className="bg-foreground text-background hover:bg-foreground/90 transition-all font-semibold rounded-full px-5 cursor-pointer">
+              <a href="/">Try for free</a>
+            </Button>
+          </div>
         </div>
 
-        {/* Hamburger Mobile */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          <ModeToggle />
           <button
             onClick={toggleMenu}
             aria-label="Toggle menu"
-            className="text-white focus:outline-none"
+            className="text-foreground focus:outline-none"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-gray-950 bg-opacity-95 backdrop-blur-sm flex flex-col items-center justify-center overflow-y-auto
-                     transition-opacity duration-300 ease-in-out animate-fadeIn"
-        >
-          {/* Close Button */}
-          <div className="absolute top-6 right-6">
-            <button
-              onClick={toggleMenu}
-              aria-label="Close menu"
-              className="text-white hover:text-gray-300 transition"
-            >
-              <X size={32} />
-            </button>
-          </div>
+        <div className="fixed inset-0 z-[60] bg-background flex flex-col items-center justify-center animate-fadeIn p-6">
+          <button
+            onClick={toggleMenu}
+            className="absolute top-6 right-6 text-foreground"
+          >
+            <X size={32} />
+          </button>
 
-          {/* Menu Items */}
-          <div className="flex flex-col items-center gap-8">
+          <div className="flex flex-col items-center gap-8 text-center">
             {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="text-white text-3xl py-4 hover:text-gray-300 transition font-semibold"
+                className="text-3xl text-foreground hover:text-muted-foreground transition font-bold"
               >
                 {item.name}
               </a>
             ))}
+            <Button
+                size="lg"
+                className="bg-foreground text-background text-lg hover:bg-foreground/90 mt-10 px-12 py-6 rounded-full transition-all font-bold"
+                onClick={() => setIsOpen(false)}
+            >
+                <a href="/">Get Started</a>
+            </Button>
           </div>
-
-          {/* CTA Button */}
-          <Button
-            className="bg-white text-black text-lg hover:bg-gray-200 mt-10 px-10 py-3 rounded-lg transition"
-            onClick={() => setIsOpen(false)}
-          >
-            <a href="/">Try LeapAI</a>
-          </Button>
         </div>
       )}
     </>

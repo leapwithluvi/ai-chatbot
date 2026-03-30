@@ -11,4 +11,3 @@ export const sendMessage = async (req: Request, res: Response) => {
   const ai_reply = await generateReply(message);
   return res.json({ ai_reply });
 };
-
