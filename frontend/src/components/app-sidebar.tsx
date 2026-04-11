@@ -29,30 +29,8 @@ import {
 import Link from "next/link";
 import { useAppContext } from "@/context/AppContext";
 
-const data = {
-  user: {
-    name: "Luvi Aprilyansyah Gabriel",
-    email: "luvi@nexus.system",
-    avatar: "/Nhi Nguyen (@almira_2399) on Threads.jpeg",
-  },
-  system: [
-    {
-      title: "New Session",
-      url: "/",
-      icon: Plus,
-    },
-    {
-      title: "Intelligence Overview",
-      url: "/overview",
-      icon: BookOpen,
-    },
-    {
-      title: "System Infrastructure",
-      url: "/about",
-      icon: Shield,
-    },
-  ],
-};
+import { sidebarData } from "@/data/sidebar";
+import { userProfile } from "@/data/profile";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const context = useAppContext();
@@ -99,7 +77,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent className="gap-0 py-4">
         <SidebarGroup>
           <SidebarMenu>
-            {data.system.map((item) => (
+            {sidebarData.systemMenu.map((item) => (
               <SidebarMenuItem key={item.title}>
                 <SidebarMenuButton asChild className="rounded-none hover:bg-muted font-bold text-xs uppercase tracking-widest px-4 py-6">
                   <Link href={item.url}>
@@ -118,10 +96,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <Search className="absolute left-4 top-2.5 h-3.5 w-3.5 text-muted-foreground" />
               <Input
                 type="text"
-                placeholder="PROBE ARCHIVES..."
+                placeholder="Search session history..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-8 bg-muted/30 border-none rounded-none text-[10px] font-bold tracking-[0.2em] focus-visible:ring-1 focus-visible:ring-foreground"
+                className="pl-8 bg-muted/20 border-border/10 rounded-none text-[10px] font-medium tracking-wide focus-visible:ring-1 focus-visible:ring-foreground placeholder:opacity-50"
               />
             </div>
           </SidebarGroupContent>
@@ -163,20 +141,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton size="lg" asChild className="rounded-none hover:bg-muted border border-border bg-background mb-4">
-              <Link href="/credits">
+              <Link href={sidebarData.footerMenu.credits.url}>
                 <div className="flex aspect-square size-8 items-center justify-center bg-muted">
-                  <Cpu size={16} className="text-foreground" />
+                  <sidebarData.footerMenu.credits.icon size={16} className="text-foreground" />
                 </div>
                 <div className="grid flex-1 text-left leading-tight">
-                  <span className="truncate text-[10px] font-black uppercase tracking-widest">Compute Credits</span>
-                  <span className="truncate font-mono text-xs font-bold">{user?.credits ?? 0} Unit</span>
+                  <span className="truncate text-[10px] font-black uppercase tracking-widest">{sidebarData.footerMenu.credits.title}</span>
+                  <span className="truncate font-mono text-xs font-bold">{user?.credits ?? 0} {sidebarData.footerMenu.credits.unit}</span>
                 </div>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
         <SidebarGroup className="p-0">
-             <NavUser user={data.user} />
+             <NavUser user={userProfile} />
         </SidebarGroup>
       </SidebarFooter>
     </Sidebar>

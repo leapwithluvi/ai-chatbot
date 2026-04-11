@@ -2,35 +2,7 @@
 
 import Link from "next/link";
 
-const tiers = [
-    {
-        name: "Public Access",
-        metrics: ["Free Entry", "Message Limits", "Gemma 4.0 Core", "Shared Instance"],
-        pricing: "FREE*",
-        cta: "Connect System",
-        subtext: "*Limited Alpha Access",
-        href: "/",
-        disabled: false
-    },
-    {
-        name: "Developer Beta",
-        metrics: ["Priority Stream", "Extended Limits", "Direct SDK Access", "Analytics"],
-        pricing: "BETA",
-        cta: "System Closed",
-        subtext: "Under Development",
-        href: "#",
-        disabled: true
-    },
-    {
-        name: "Enterprise",
-        metrics: ["In-VPC Control", "Custom Model 4.0", "Full Redundancy", "SLA Support"],
-        pricing: "SCALE",
-        cta: "Liaison Office",
-        subtext: "Commercial Deployment",
-        href: "#contact",
-        disabled: false
-    }
-];
+import { pricingTiers } from "@/data/pricing";
 
 const Pricing = () => {
     return (
@@ -54,7 +26,7 @@ const Pricing = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-[1px] bg-border border border-border">
-                    {tiers.map((tier) => (
+                    {pricingTiers.map((tier) => (
                         <div key={tier.name} className="bg-background p-8 md:p-16 flex flex-col hover:bg-muted/50 transition-colors">
                             <div className="flex justify-between items-start mb-12">
                                 <h3 className="text-xs uppercase font-black tracking-[0.3em]">{tier.name}</h3>

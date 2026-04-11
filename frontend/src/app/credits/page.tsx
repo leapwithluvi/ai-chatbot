@@ -2,18 +2,23 @@
 
 import Navbar from "@/components/Navbar";
 import { useAppContext } from "@/context/AppContext";
-import { Cpu, Zap, Activity, Clock, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { Cpu, Zap, Activity, ShieldCheck, ArrowUpRight } from "lucide-react";
+import { creditsData } from "@/data/credits";
+import { systemMetadata } from "@/data/metadata";
 
 export default function ResourceCreditsPage() {
   const context = useAppContext();
   const user = context?.user;
+  const neuralCore = systemMetadata.find(m => m.label === "Neural_Core")?.value || "N/A";
 
-  const usageHistory = [
-    { id: "TX-9281", type: "Inference", model: "Gemma 4.0", amount: "-120 Units", time: "2026.04.11 12:45" },
-    { id: "TX-9275", type: "Training", model: "Core Calibration", amount: "-500 Units", time: "2026.04.11 09:12" },
-    { id: "TX-9260", type: "Inference", model: "Gemma 4.0", amount: "-45 Units", time: "2026.04.10 22:30" },
-    { id: "SYS-001", type: "Daily Grant", model: "System", amount: "+1000 Units", time: "2026.04.10 00:00" },
-  ];
+  const getMetricIcon = (type: string) => {
+    switch (type) {
+        case "Activity": return <Activity size={16} />;
+        case "Zap": return <Zap size={16} />;
+        case "ShieldCheck": return <ShieldCheck size={16} />;
+        default: return <Activity size={16} />;
+    }
+  };
 
   return (
     <div className="bg-background text-foreground min-h-screen selection:bg-foreground selection:text-background font-sans">
@@ -21,10 +26,10 @@ export default function ResourceCreditsPage() {
       
       <main className="mono-container pt-40 pb-20">
         <div className="flex flex-col mb-20 md:mb-32 border-l-4 border-foreground pl-12 py-4">
-            <span className="label-mono mb-8 block font-black">Resource Allocation Monitor</span>
-            <h1 className="text-huge mb-12 lowercase">Credits.</h1>
+            <span className="label-mono mb-8 block font-black">{creditsData.subheading}</span>
+            <h1 className="text-huge mb-12 lowercase">{creditsData.heading}</h1>
             <p className="text-xl font-medium leading-relaxed italic max-w-2xl text-muted-foreground">
-                Monitoring real-time computational expenditure and system unit balance for the Nexus Protocol.
+                {creditsData.description}
             </p>
         </div>
 
@@ -44,8 +49,8 @@ export default function ResourceCreditsPage() {
                 
                 <div className="flex flex-col gap-6 pt-12 border-t border-background/10">
                     <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
-                        <span>Daily Refresh Rate</span>
-                        <span>+1,000 Units / 24h</span>
+                        <span>{creditsData.refreshRate.split(":")[0]}</span>
+                        <span>{creditsData.refreshRate.split(":")[1]}</span>
                     </div>
                     <div className="h-1.5 w-full bg-background/10 overflow-hidden">
                         <div className="h-full bg-background w-[65%] animate-pulse" />
@@ -55,26 +60,22 @@ export default function ResourceCreditsPage() {
 
             <div className="lg:col-span-4 grid grid-cols-1 gap-8">
                 <div className="bg-muted p-10 flex flex-col justify-center border border-border">
-                    <span className="label-mono mb-4 block">Intelligence Tier</span>
-                    <span className="text-3xl font-bold tracking-tighter uppercase italic">Alpha Protocol</span>
+                    <span className="label-mono mb-4 block">{creditsData.tier.label}</span>
+                    <span className="text-3xl font-bold tracking-tighter uppercase italic">{creditsData.tier.value}</span>
                 </div>
                 <div className="bg-muted p-10 flex flex-col justify-center border border-border">
                     <span className="label-mono mb-4 block">Assigned Core</span>
-                    <span className="text-3xl font-bold tracking-tighter uppercase italic">Gemma 4.0 Flash</span>
+                    <span className="text-3xl font-bold tracking-tighter uppercase italic">{neuralCore}</span>
                 </div>
             </div>
         </div>
 
         {/* Detailed Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-40">
-            {[
-                { label: "Uptime", value: "99.998%", icon: <Activity size={16} /> },
-                { label: "Sync Latency", value: "14ms", icon: <Zap size={16} /> },
-                { label: "Protocol", value: "SECURE_v4", icon: <ShieldCheck size={16} /> }
-            ].map((metric) => (
+            {creditsData.metrics.map((metric) => (
                 <div key={metric.label} className="flex flex-col border-b-2 border-border pb-6">
                     <div className="flex items-center gap-2 mb-4 text-muted-foreground">
-                        {metric.icon}
+                        {getMetricIcon(metric.type)}
                         <span className="text-[10px] font-black uppercase tracking-widest">{metric.label}</span>
                     </div>
                     <span className="text-4xl font-black tracking-tighter">{metric.value}</span>
@@ -86,7 +87,7 @@ export default function ResourceCreditsPage() {
         <div className="space-y-12">
             <h2 className="text-xs uppercase font-black tracking-[0.4em] border-b border-border pb-4 w-full">Computation Log</h2>
             <div className="grid grid-cols-1 gap-[1px] bg-border border border-border">
-                {usageHistory.map((log) => (
+                {creditsData.usageHistory.map((log) => (
                     <div key={log.id} className="grid grid-cols-2 md:grid-cols-5 items-center p-8 bg-background hover:bg-muted/30 transition-all gap-8">
                         <div className="flex flex-col gap-1">
                             <span className="text-[10px] font-mono text-muted-foreground">[{log.id}]</span>

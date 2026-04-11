@@ -112,7 +112,13 @@
   }
   
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 60s linear infinite;
+  }
+
+  @media (max-width: 640px) {
+    .animate-marquee {
+      animation: marquee 50s linear infinite;
+    }
   }
 
   @keyframes marquee {

@@ -1,5 +1,7 @@
 "use client";
 
+import { contactInfo, socialLinks } from "@/data/contact";
+
 const Contact = () => {
   return (
     <section id="contact" className="py-20 md:py-40">
@@ -12,9 +14,30 @@ const Contact = () => {
                     <p className="text-lg md:text-xl font-medium leading-relaxed italic">
                         This platform is a technical demonstration. To collaborate or view the developer&apos;s full portfolio, please reach out via official channels.
                     </p>
-                    <div className="space-y-4">
+                    
+                    <div className="grid grid-cols-1 gap-6">
+                        {socialLinks.map((social) => (
+                            <a 
+                                key={social.name} 
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-4 group"
+                            >
+                                <div className="w-10 h-10 bg-muted flex items-center justify-center group-hover:bg-foreground group-hover:text-background transition-all">
+                                    <social.icon size={18} />
+                                </div>
+                                <div>
+                                    <div className="text-[8px] font-black uppercase tracking-[0.3em] opacity-40">{social.label}</div>
+                                    <div className="text-xs font-bold uppercase tracking-widest">{social.name}</div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+
+                    <div className="space-y-4 pt-8 border-t border-border">
                         <div className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">General Enquiries</div>
-                        <div className="text-lg md:text-xl font-bold border-b border-border pb-2">HQ@NEXUS.SYSTEM</div>
+                        <div className="text-lg md:text-xl font-bold border-b border-border pb-2 uppercase">{contactInfo.email}</div>
                     </div>
                 </div>
             </div>

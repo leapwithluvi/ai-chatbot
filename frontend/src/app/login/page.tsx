@@ -1,0 +1,28 @@
+"use client";
+
+import { LoginForm } from "@/components/auth/LoginForm";
+import Navbar from "@/components/Navbar";
+import { useRouter } from "next/navigation";
+
+export default function LoginPage() {
+  const router = useRouter();
+
+  return (
+    <div className="bg-background min-h-screen selection:bg-foreground selection:text-background font-sans">
+      <Navbar />
+      <main className="flex items-center justify-center pt-32 pb-20 px-4">
+        <div className="w-full max-w-md p-10 border-2 border-border bg-background shadow-[30px_30px_0px_0px_rgba(0,0,0,0.05)] relative overflow-hidden group">
+          {/* Subtle Grid Pattern Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
+          
+          <LoginForm onSwitch={() => router.push("/register")} />
+          
+          <div className="mt-8 pt-8 border-t border-border flex justify-between items-center opacity-30">
+              <span className="text-[8px] font-black tracking-widest uppercase">NXS_SECURE_AUTH</span>
+              <span className="text-[8px] font-mono">v4.0.1</span>
+          </div>
+        </div>
+      </main>
+    </div>
+  );
+}

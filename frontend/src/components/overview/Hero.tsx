@@ -4,7 +4,7 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex flex-col justify-end pt-32 pb-20 overflow-hidden">
+    <section className="relative min-h-[80vh] md:min-h-screen flex flex-col justify-center pt-24 md:pt-32 pb-20 overflow-hidden">
       <div className="mono-container">
         <div className="flex flex-col mb-24">
             <span className="label-mono mb-8 block animate-fadeIn">Portfolio Project • System Protocol v4.01 • Powered by Gemma 4 API</span>

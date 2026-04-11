@@ -14,6 +14,9 @@ import { Cpu, Plus } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
+import { userProfile } from "@/data/profile";
+import { systemMetadata } from "@/data/metadata";
+
 export default function ChatPage() {
   return (
     <SidebarProvider defaultOpen={false}>
@@ -24,6 +27,7 @@ export default function ChatPage() {
 
 function ChatPageContent() {
   const { openMobile } = useSidebar();
+  const neuralCore = systemMetadata.find(m => m.label === "Neural_Core")?.value || "N/A";
   
   return (
     <>
@@ -45,14 +49,14 @@ function ChatPageContent() {
                     <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Session Status</span>
                     <div className="flex items-center gap-2">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]"></div>
-                        <span className="text-xs font-bold uppercase tracking-tighter italic">ACTIVE_ENCRYPTED</span>
+                        <span className="text-xs font-bold uppercase tracking-tighter italic">{userProfile.status}</span>
                     </div>
                 </div>
                 <div className="flex flex-col">
                     <span className="text-[10px] font-black uppercase tracking-widest text-muted-foreground">Compute Core</span>
                     <div className="flex items-center gap-2">
                         <Cpu size={12} className="text-foreground" />
-                        <span className="text-xs font-bold uppercase tracking-tighter">GEMMA_4.0_FLASH</span>
+                        <span className="text-xs font-bold uppercase tracking-tighter">{neuralCore}</span>
                     </div>
                 </div>
             </div>

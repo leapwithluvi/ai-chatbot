@@ -1,5 +1,7 @@
 "use client";
 
+import { steps } from "@/data/workflow";
+
 const HowItWorks = () => {
   return (
     <section id="how-it-works" className="py-40">
@@ -13,11 +15,7 @@ const HowItWorks = () => {
             {/* Center Line (Hidden on mobile) */}
             <div className="absolute left-1/2 top-0 w-px h-full bg-border -translate-x-1/2 hidden lg:block"></div>
             
-            {[
-                { title: "Ingestion", desc: "Siphon data into our isolated sovereign buffer." },
-                { title: "Processing", desc: "Neural mapping without ever touching the public web." },
-                { title: "Extraction", desc: "Retrieve insights via secure terminal protocols." }
-            ].map((step, i) => (
+            {steps.map((step, i) => (
                 <div key={i} className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] items-start lg:items-center gap-8 lg:gap-20">
                     
                     {/* PC Left / Mobile Title Core */}
