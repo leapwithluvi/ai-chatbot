@@ -1,51 +1,34 @@
 "use client";
 
-import Link from "next/link";
+import { techStack } from "@/data/techstack";
+import { AuthDialog } from "../auth/AuthDialog";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[80vh] md:min-h-screen flex flex-col justify-center pt-24 md:pt-32 pb-20 overflow-hidden">
+    <section className="relative min-h-[50vh] flex flex-col justify-center pt-24 md:pt-32 pb-20 overflow-hidden">
       <div className="mono-container">
         <div className="flex flex-col mb-24">
             <span className="label-mono mb-8 block animate-fadeIn">Portfolio Project • System Protocol v4.01 • Powered by Gemma 4 API</span>
-            <h1 className="text-huge animate-slideUp">
+            <h1 className="text-huge animate-slideUp leading-[0.9]">
                 ADVANCED <br />
                 COGNITION.
             </h1>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-border pt-12">
-            <div className="lg:col-span-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-border pt-12 items-start">
+            <div className="lg:col-span-4 space-y-4">
+                <span className="text-[10px] font-black uppercase tracking-[0.4em] text-muted-foreground border-b border-border pb-1 inline-block">
+                    Mission_Manifest
+                </span>
                 <p className="text-lg leading-[1.4] font-medium text-foreground italic">
                     Our platform provides high-integrity artificial intelligence for critical operations. 
                     Built on secure architecture and validated models.
                 </p>
-            </div>
-            <div className="lg:col-span-3 lg:col-start-6">
-                <div className="space-y-6">
-                    <p className="text-xs text-muted-foreground leading-relaxed uppercase tracking-wider">
-                        We prioritize consistency and transparency in every interaction, ensuring your enterprise maintains control over its proprietary intelligence.
-                    </p>
-                    <Link href="/" className="inline-block text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-foreground pb-1 hover:opacity-70 transition-all">
+                <AuthDialog>
+                    <button className="inline-block text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-foreground pb-1 hover:opacity-70 transition-all cursor-pointer">
                         Initiate Protocol
-                    </Link>
-                </div>
-            </div>
-            <div className="lg:col-span-3 lg:col-start-10">
-                <div className="flex flex-col gap-4 text-[10px] uppercase tracking-widest text-muted-foreground font-bold">
-                    <div className="flex justify-between border-b border-border pb-2">
-                        <span>Latency</span>
-                        <span className="text-foreground">0.04s</span>
-                    </div>
-                    <div className="flex justify-between border-b border-border pb-2">
-                        <span>Reliability</span>
-                        <span className="text-foreground">99.99%</span>
-                    </div>
-                    <div className="flex justify-between border-b border-border pb-2">
-                        <span>Encryption</span>
-                        <span className="text-foreground">AES-256</span>
-                    </div>
-                </div>
+                    </button>
+                </AuthDialog>
             </div>
         </div>
 

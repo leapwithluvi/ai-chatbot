@@ -37,22 +37,24 @@ export default function CreditsPage() {
             </div>
 
             {/* Section: Protocols Grouped by Category */}
-            <div className="space-y-16">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 {["Frontend", "AI & Logic", "Infrastructure"].map((category) => (
                     <div key={category} className="space-y-6">
                         <h2 className="text-[10px] uppercase font-black tracking-[0.4em] text-muted-foreground border-b border-border pb-2 inline-block">
                             {category.replace("&", "_")}_Protocols
                         </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border">
-                            {techStack.filter(t => t.category === category).map((tech) => (
-                                <div key={tech.name} className="flex justify-between items-center p-5 bg-background hover:bg-muted/50 transition-all group">
-                                    <div className="flex flex-col">
-                                        <span className="text-xs font-bold tracking-tight uppercase group-hover:text-foreground transition-colors">{tech.name}</span>
-                                        <span className="text-[8px] font-black uppercase tracking-[0.1em] text-muted-foreground/60">{tech.type}</span>
+                        <div className="max-h-[350px] overflow-y-auto pr-2 custom-scrollbar border border-border bg-muted/10">
+                            <div className="grid grid-cols-1 gap-px bg-border">
+                                {techStack.filter(t => t.category === category).map((tech) => (
+                                    <div key={tech.name} className="flex justify-between items-center p-5 bg-background hover:bg-muted/50 transition-all group">
+                                        <div className="flex flex-col">
+                                            <span className="text-xs font-bold tracking-tight uppercase group-hover:text-foreground transition-colors">{tech.name}</span>
+                                            <span className="text-[8px] font-black uppercase tracking-[0.1em] text-muted-foreground/60">{tech.type}</span>
+                                        </div>
+                                        <div className="w-1.5 h-1.5 bg-border group-hover:bg-foreground transition-all"></div>
                                     </div>
-                                    <div className="w-1.5 h-1.5 bg-border group-hover:bg-foreground transition-all"></div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
                 ))}

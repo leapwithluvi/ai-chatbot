@@ -9,7 +9,7 @@ import Contact from "@/components/overview/Contact";
 import Pricing from "@/components/overview/Pricing";
 import { techStack } from "@/data/techstack";
 import { Gemma } from "@lobehub/icons";
-import { socialLinks, contactInfo } from "@/data/contact";
+import { socialLinks } from "@/data/contact";
 import { systemMetadata, footerManifest } from "@/data/metadata";
 
 export default function OverviewPage() {

@@ -126,3 +126,20 @@
     to { transform: translateX(-50%); }
   }
 }
+
+/* Custom Scrollbar for Containers */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: hsl(var(--border));
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--foreground) / 0.5);
+}

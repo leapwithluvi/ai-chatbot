@@ -1,7 +1,6 @@
 "use client";
 
 import { RegisterForm } from "@/components/auth/RegisterForm";
-import Navbar from "@/components/Navbar";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
@@ -9,8 +8,7 @@ export default function RegisterPage() {
 
   return (
     <div className="bg-background min-h-screen selection:bg-foreground selection:text-background font-sans">
-      <Navbar />
-      <main className="flex items-center justify-center pt-32 pb-20 px-4">
+      <main className="flex items-center justify-center min-h-screen py-20 px-4">
         <div className="w-full max-w-md p-10 border-2 border-border bg-background shadow-[30px_30px_0px_0px_rgba(0,0,0,0.05)] relative overflow-hidden group">
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px]"></div>
           
