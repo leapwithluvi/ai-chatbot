@@ -1,68 +1,61 @@
-import { MessageSquare, Zap, Shield, Cpu, Globe, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+"use client";
 
-const features = [
-  {
-    icon: <Zap className="text-yellow-400" size={24} />,
-    title: "Fast Response",
-    description: "Get instant answers with our optimized AI models, designed for speed and efficiency.",
-  },
-  {
-    icon: <MessageSquare className="text-blue-400" size={24} />,
-    title: "Natural Conversations",
-    description: "Experience human-like interaction with advanced context understanding and reasoning.",
-  },
-  {
-    icon: <Shield className="text-green-400" size={24} />,
-    title: "Private & Secure",
-    description: "Your conversations are processed locally, ensuring your data stays private and safe.",
-  },
-  {
-    icon: <Cpu className="text-purple-400" size={24} />,
-    title: "Edge AI",
-    description: "Leveraging the power of lightweight large language models running efficiently on any hardware.",
-  },
-  {
-    icon: <Globe className="text-pink-400" size={24} />,
-    title: "Multilingual Support",
-    description: "Communicate effortlessly across different languages with broad linguistic capabilities.",
-  },
-  {
-    icon: <ArrowRight className="text-orange-400" size={24} />,
-    title: "Extensible",
-    description: "Seamlessly integrate with your existing workflows and tools for maximum productivity.",
-  },
+const technicalSpecs = [
+    {
+        id: "01",
+        title: "SECURE INFERENCE",
+        description: "Executing large-scale models within isolated environments to prevent data leakage and ensure sovereign control."
+    },
+    {
+        id: "02",
+        title: "DETERMINISTIC LOGIC",
+        description: "Advanced steering mechanisms allow for precise output formatting and adherence to corporate compliance standards."
+    },
+    {
+        id: "03",
+        title: "LOCAL RESIDENCY",
+        description: "Deploy across on-premise hardware or private clouds to satisfy rigorous jurisdictional data requirements."
+    },
+    {
+        id: "04",
+        title: "SCALABLE ACCESS",
+        description: "Optimized distributed architecture that maintains performance regardless of concurrent user volume."
+    },
+    {
+        id: "05",
+        title: "AUDITABLE LAYERS",
+        description: "Full visibility into model decision pathways and interaction history for regulatory transparency."
+    },
+    {
+        id: "06",
+        title: "SYSTEM AGNOSTIC",
+        description: "Integration endpoints supporting multiple interface protocols from legacy mainframes to modern cloud stacks."
+    }
 ];
 
 const Features = () => {
   return (
-    <section id="features" className="py-24 px-6 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full -mr-40 -mt-20" />
-        
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/60">
-            Powerful features for modern teams.
-          </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to build, scale, and manage your AI interactions with confidence.
-          </p>
+    <section id="features" className="py-20 md:py-40 bg-foreground text-background">
+      <div className="mono-container">
+        <div className="flex flex-col mb-20 md:mb-32 border-l border-background/20 pl-8">
+            <span className="label-mono mb-4 text-background/50">Core Infrastructure • Integrating Gemma 4.0</span>
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter leading-none mb-4 lowercase">
+                Technical Specifications.
+            </h2>
+            <p className="text-xl max-w-2xl text-background/70 font-medium">
+                Our platform interfaces with the world&apos;s most advanced models to provide high-integrity intelligence.
+            </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
-            <Card key={index} className="group bg-card border-border hover:border-border/80 transition-all duration-300 hover:bg-accent/5 overflow-hidden">
-              <CardContent className="p-8">
-                <div className="w-12 h-12 rounded-xl bg-accent/5 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  {feature.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-foreground">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {technicalSpecs.map((spec) => (
+            <div key={spec.id} className="p-8 md:p-12 border border-background/10 hover:bg-background/5 transition-all group">
+                <span className="text-xs font-bold font-mono opacity-30 mb-12 block group-hover:opacity-100 transition-opacity">[{spec.id}]</span>
+                <h3 className="text-2xl font-bold mb-6 tracking-tight tracking-wide">{spec.title}</h3>
+                <p className="text-sm leading-relaxed opacity-60 font-medium group-hover:opacity-100 transition-opacity">
+                  {spec.description}
                 </p>
-              </CardContent>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

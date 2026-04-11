@@ -1,47 +1,60 @@
-import { Button } from "../ui/button";
-import { Sparkles } from "lucide-react";
+"use client";
+
+import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="relative min-h-[90vh] flex flex-col justify-center items-center px-6 text-center overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full animate-pulse-glow" />
-      <div className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-purple-500/10 blur-[100px] rounded-full" />
-
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 backdrop-blur-sm border border-border mb-8 animate-fadeIn">
-          <Sparkles size={16} className="text-blue-500" />
-          <span className="text-sm font-medium text-blue-600 dark:text-blue-300">Advanced AI Technology</span>
+    <section className="relative min-h-screen flex flex-col justify-end pt-32 pb-20 overflow-hidden">
+      <div className="mono-container">
+        <div className="flex flex-col mb-24">
+            <span className="label-mono mb-8 block animate-fadeIn">Portfolio Project • System Protocol v4.01 • Powered by Gemma 4 API</span>
+            <h1 className="text-huge animate-slideUp">
+                ADVANCED <br />
+                COGNITION.
+            </h1>
         </div>
 
-        <h1 className="font-extrabold tracking-tight text-balance mb-6 text-5xl sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/50">
-          The future of <br /> conversational AI.
-        </h1>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 border-t border-border pt-12">
+            <div className="lg:col-span-4">
+                <p className="text-lg leading-[1.4] font-medium text-foreground italic">
+                    Our platform provides high-integrity artificial intelligence for critical operations. 
+                    Built on secure architecture and validated models.
+                </p>
+            </div>
+            <div className="lg:col-span-3 lg:col-start-6">
+                <div className="space-y-6">
+                    <p className="text-xs text-muted-foreground leading-relaxed uppercase tracking-wider">
+                        We prioritize consistency and transparency in every interaction, ensuring your enterprise maintains control over its proprietary intelligence.
+                    </p>
+                    <Link href="/" className="inline-block text-xs uppercase tracking-[0.2em] font-bold border-b-2 border-foreground pb-1 hover:opacity-70 transition-all">
+                        Initiate Protocol
+                    </Link>
+                </div>
+            </div>
+            <div className="lg:col-span-3 lg:col-start-10">
+                <div className="flex flex-col gap-4 text-[10px] uppercase tracking-widest text-muted-foreground font-bold">
+                    <div className="flex justify-between border-b border-border pb-2">
+                        <span>Latency</span>
+                        <span className="text-foreground">0.04s</span>
+                    </div>
+                    <div className="flex justify-between border-b border-border pb-2">
+                        <span>Reliability</span>
+                        <span className="text-foreground">99.99%</span>
+                    </div>
+                    <div className="flex justify-between border-b border-border pb-2">
+                        <span>Encryption</span>
+                        <span className="text-foreground">AES-256</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <p className="leading-relaxed text-lg sm:text-xl text-muted-foreground max-w-2xl mb-10 animate-slideUp">
-          Nexus AI is a lightweight yet powerful assistant designed for fast, intelligent, and private conversations. Explore ideas, boost productivity, and get answers effortlessly.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 animate-slideUp" style={{ animationDelay: "200ms" }}>
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all font-semibold px-8 h-12 cursor-pointer"
-          >
-            <a href="/">Start Chatting</a>
-          </Button>
-
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="rounded-full border-border bg-accent/5 text-foreground hover:bg-accent/10 transition-all px-8 h-12"
-          >
-            <a href="#features">Explore Features</a>
-          </Button>
+        {/* Massive Background element (Subtle) */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 opacity-[0.02] pointer-events-none select-none">
+            <div className="text-[40vw] font-black leading-none">NX</div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,43 +1,46 @@
-import React from "react";
-import { Github, Linkedin, Mail } from "lucide-react";
+"use client";
 
 const Contact = () => {
   return (
-    <section
-      id="contact"
-      className="px-6 py-20 max-w-4xl mx-auto text-center text-foreground"
-    >
-      <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
-      <p className="text-muted-foreground mb-8">
-        Interested in my projects or want to collaborate? Feel free to reach
-        out!
-      </p>
-      <div className="flex justify-center gap-8">
-        <a
-          href="https://github.com/leapwithluvi"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center hover:text-muted-foreground transition"
-        >
-          <Github size={32} />
-          <span className="mt-2 text-sm">GitHub</span>
-        </a>
-        <a
-          href="mailto:itsluvi13@example.com"
-          className="flex flex-col items-center hover:text-muted-foreground transition"
-        >
-          <Mail size={32} />
-          <span className="mt-2 text-sm">Email</span>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/luviaprilyansyahgabriel"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex flex-col items-center hover:text-muted-foreground transition"
-        >
-          <Linkedin size={32} />
-          <span className="mt-2 text-sm">LinkedIn</span>
-        </a>
+    <section id="contact" className="py-20 md:py-40">
+      <div className="mono-container">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 md:gap-24">
+            <div className="flex flex-col border-l-4 border-foreground pl-6 md:pl-12 py-4">
+                <span className="label-mono mb-8 block font-black">Liaison • Portfolio Case Study</span>
+                <h2 className="text-huge mb-12 lowercase">Contact.</h2>
+                <div className="space-y-12 max-w-sm">
+                    <p className="text-lg md:text-xl font-medium leading-relaxed italic">
+                        This platform is a technical demonstration. To collaborate or view the developer&apos;s full portfolio, please reach out via official channels.
+                    </p>
+                    <div className="space-y-4">
+                        <div className="text-[10px] font-black uppercase tracking-[0.3em] text-muted-foreground">General Enquiries</div>
+                        <div className="text-lg md:text-xl font-bold border-b border-border pb-2">HQ@NEXUS.SYSTEM</div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="bg-muted p-8 md:p-16">
+                <form className="space-y-12">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div className="space-y-4">
+                            <label className="label-mono font-black">Identity</label>
+                            <input type="text" className="w-full bg-transparent border-b-2 border-foreground/20 focus:border-foreground transition-colors py-4 text-sm font-bold uppercase tracking-widest outline-none" placeholder="Full Name" />
+                        </div>
+                        <div className="space-y-4">
+                            <label className="label-mono font-black">Protocol Address</label>
+                            <input type="email" className="w-full bg-transparent border-b-2 border-foreground/20 focus:border-foreground transition-colors py-4 text-sm font-bold uppercase tracking-widest outline-none" placeholder="Corporate Email" />
+                        </div>
+                    </div>
+                    <div className="space-y-4">
+                        <label className="label-mono font-black">Brief</label>
+                        <textarea className="w-full bg-transparent border-b-2 border-foreground/20 focus:border-foreground transition-colors py-4 text-sm font-bold uppercase tracking-widest outline-none resize-none h-32" placeholder="System Requirements Summary"></textarea>
+                    </div>
+                    <button className="h-20 w-full bg-foreground text-background font-black uppercase text-sm tracking-[0.4em] hover:opacity-90 transition-opacity">
+                        Request System Access
+                    </button>
+                </form>
+            </div>
+        </div>
       </div>
     </section>
   );
